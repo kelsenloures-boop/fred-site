@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Alfredo Manuel Buque — Página Inicial</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* ======== PÁGINA INICIAL COM FOTO DE FUNDO (PARALLAX + DESFOQUE) ======== */
+    #home {
+      height: 100vh;
+      width: 100%;
+      background: url("imagens/CCCC.jpeg") no-repeat center center/cover;
+      background-attachment: fixed; /* Parallax (movimento lento ao rolar) */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Camada escura e leve desfoque no fundo */
+    #home::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(4px); /* ✨ Efeito de desfoque suave */
+      z-index: 0;
+    }
+
+    #home * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ======== ESTILO DO NOME E SUBTÍTULO ======== */
+    h1 {
+      font-size: 3em;
+      font-weight: 700;
+      background: linear-gradient(90deg, #00d4ff, #00ff9d, #ffea00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: brilho 4s infinite linear;
+    }
+
+    @keyframes brilho {
+      0% { filter: brightness(1); }
+      50% { filter: brightness(1.6); }
+      100% { filter: brightness(1); }
+    }
+
+    p {
+      font-size: 1.2em;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 35px;
+      font-style: italic;
+    }
+
+    /* ======== BOTÕES COLORIDOS ======== */
+    .home-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .btn {
+      text-decoration: none;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-cv { background: #007bff; }       /* Azul */
+    .btn-galeria { background: #ff9800; }  /* Laranja */
+    .btn-form { background: #4caf50; }     /* Verde */
+    .btn-portfolio { background: #e91e63; } /* Rosa avermelhado */
+
+    /* ======== SEÇÕES INTERNAS ======== */
+    section:not(#home) {
+      display: none;
+      min-height: 100vh;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    nav {
+      background: #004d80;
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav button {
+      background: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: #004d80;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    nav button:hover {
+      background: #007acc;
+      color: white;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      color: #777;
+      background: #eee;
+    }
+
+    /* ======== EFEITO DE TRANSIÇÃO SUAVE ENTRE PÁGINAS ======== */
+    section {
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    section.ativo {
+      display: block;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== PÁGINA INICIAL ===================== -->
+  <section id="home" class="ativo">
+    <h1>Dr. Alfredo Manuel Buque</h1>
+    <p>Bem-vindo ao meu portfólio pessoal e profissional</p>
+
+    <div class="home-buttons">
+      <a href="indexx.html" class="btn btn-cv" onclick="mostrar('curriculo')">📄 Currículo</a>
+      <a href="trabalho" class="btn btn-galeria" onclick="mostrar('galeria')">🖼️ Galeria</a>
+      <a href="formulario.html" class="btn btn-form" onclick="mostrar('formularios')">📝 Formulários</a>
+      <a href="https://alfredo-lgtm.github.io/Alfredo-Manuel/" target="_blank" class="btn btn-portfolio">💼 Portfólio</a>
+    </div>
+  </section>
+
+  <!-- ===================== CURRÍCULO ===================== -->
+  <section id="curriculo">
+    <nav>
+      <button onclick="mostrar('home')">🏠 Voltar à Página Inicial</button>
+    </nav>
+    <div class="container">
+      <h2>📄 Currículo</h2>
+      <p>Aqui pode inserir o conteúdo do seu currículo profissional.</p>
+    </div>
+    <footer>© 2025 — Desenvolvido por Dr. Alfredo Manuel Buque</footer>
+  </section>
+
+  <!-- ===================== GALERIA ===================== -->
+  <section id="galeria">
+    <nav>
+      <button onclick="mostrar('home')">🏠 Voltar à Página Inicial</button>
+    </nav>
+    <div class="container">
+      <h2>🖼️ Galeria</h2>
+      <p>Aqui pode adicionar fotos, vídeos e áudios dos seus projetos.</p>
+    </div>
+    <footer>© 2025 — Desenvolvido por Dr. Alfredo Manuel Buque</footer>
+  </section>
+
+  <!-- ===================== FORMULÁRIOS ===================== -->
+  <section id="formularios">
+    <nav>
+      <button onclick="mostrar('home')">🏠 Voltar à Página Inicial</button>
+    </nav>
+    <div class="container">
+      <h2>📝 Exercícios de Formulários HTML</h2>
+      <form>
+        <label>Nome:</label>
+        <input type="text" placeholder="Digite seu nome" required>
+        <label>Email:</label>
+        <input type="email" placeholder="exemplo@email.com" required>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+    <footer>© 2025 — Desenvolvido por Dr. Alfredo Manuel Buque</footer>
+  </section>
+
+  <!-- ===================== JAVASCRIPT ===================== -->
+  <script>
+    function mostrar(secao) {
+      document.querySelectorAll("section").forEach(el => {
+        el.classList.remove("ativo");
+        el.style.display = "none";
+      });
+      const mostrarSecao = document.getElementById(secao);
+      mostrarSecao.style.display = "block";
+      setTimeout(() => mostrarSecao.classList.add("ativo"), 50);
+      window.scrollTo(0, 0);
+    }
+  </script>
+
+</body>
+</html>
